@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
-
+from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,12 +22,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-p@by%e9e#qu(g+e+6t(3zfna7_!o=#frhvd6y4_it0+3t241td'
+SECRET_KEY = config('django-insecure-p@by%e9e#qu(g+e+6t(3zfna7_!o=#frhvd6y4_it0+3t241td')
+DEBUG = config('DEBUG', cast=bool)
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = []
+    # SECURITY WARNING: don't run with debug turned on in production!
+
+ALLOWED_HOSTS = ['howmuchcostyourhabits.onrender.com']
 
 
 # Application definition
@@ -150,9 +152,7 @@ REST_FRAMEWORK = {
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
 ]
-from decouple import config
-SECRET_KEY = config('abc123')
-DEBUG = config('DEBUG', cast=bool)
+
 
 
 
